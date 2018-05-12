@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <style type="text/css">
+        html { height: 100% }
+        body { height: 100%; margin: 0; padding: 0 }
+        #map { height: 100% }
+    </style>
+    <!--<script type="text/javascript"
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAvltG74TQWOCkgm11FC5_qt6rteKbFYT0&sensor=false"></script>
+    <script type="text/javascript">
+        function initialize() {
+            var map = new google.maps.Map(document.getElementById('map'), {
+                center: new google.maps.LatLng(51.505, -0.09),
+                mapTypeId: google.maps.MapTypeId.ROADMAP,
+                zoom: 11
+            });
+
+            var t = new Date().getTime();
+            var waqiMapOverlay = new google.maps.ImageMapType({
+                getTileUrl: function (coord, zoom) {
+                    return 'https://tiles.waqi.info/tiles/usepa-aqi/' + zoom + "/" + coord.x + "/" + coord.y + ".png?token=ee98560dc4b599f0d9705ebf12716c3fb073452d";
+                },
+                name: "Air  Quality",
+            });
+
+            map.overlayMapTypes.insertAt(0, waqiMapOverlay);
+        }
+
+
+        google.maps.event.addDomListener(window, 'load', initialize);
+
+    </script>-->
+
+</head>
+<body>
+<div  id='map'  style='height:380px;'  />
+<script  type="text/javascript"  charset="utf-8">
+    (function(w,d,t,f){  w[f]=w[f]||function(c,k,n){s=w[f],k=s['k']=(s['k']||(k?('&k='+k):''));s['c']=
+        c=(c  instanceof  Array)?c:[c];s['n']=n=n||0;L=d.createElement(t),e=d.getElementsByTagName(t)[0];
+        L.async=1;L.src='//feed.aqicn.org/feed/'+(c[n].city)+'/'+(c[n].lang||'')+'/feed.v1.js?n='+n+k;
+        e.parentNode.insertBefore(L,e);  };  })(  window,document,'script','_aqiFeed'  );
+</script>
+<span  id="mutiple-city-aqi"></span>
+
+<script  type="text/javascript"  charset="utf-8">
+    var  cities  =  ["boston", "london",  "newyork",  "seoul",  "guangzhou",  "tokyo",  "shanghai",  "paris","hongkong"];
+
+    var  aqiWidgetConfig  =  [];
+    cities.forEach(function(city)  {  aqiWidgetConfig.push({city:city,  callback:  displayCity});  });
+    _aqiFeed(aqiWidgetConfig);
+
+    function  displayCity(aqi)  {
+        $("#mutiple-city-aqi").append(aqi.details);
+    }
+</script>
+</body>
+</html>

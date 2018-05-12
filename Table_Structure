@@ -1,0 +1,22 @@
+
+
+create table ds_pollution_new
+(
+
+CBSA VARCHAR(255),
+CBSA_code VARCHAR(255),
+
+Date	VARCHAR(255),
+AQI	VARCHAR(255),
+Category	VARCHAR(255),
+Defining VARCHAR(255),
+Parameter	VARCHAR(255),
+Defining_Site	VARCHAR(255),
+Num_sites_report VARCHAR(255)
+
+);
+
+
+
+LOAD DATA LOCAL INFILE '/Users/srikantswamy/Downloads/ds_boston_3.csv' INTO TABLE AED.DS_Pollution_new FIELDS TERMINATED BY ',';
+
